@@ -1,0 +1,435 @@
+/* ========================================
+   Reset
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   الصفحة
+======================================== */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    background: #000;
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   Header
+======================================== */
+
+header {
+    width: 98%;
+    margin: auto;
+
+    padding: 10px 0;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+}
+
+
+/* ========================================
+   العنوان
+======================================== */
+
+h3 {
+    color: white;
+
+    text-align: center;
+
+    margin-bottom: 10px;
+}
+
+
+/* ========================================
+   الفيديوهات
+======================================== */
+
+.videos {
+    width: 100%;
+    height: 100vh;
+
+    overflow-y: scroll;
+
+    scroll-snap-type: y mandatory;
+
+    scrollbar-width: none;
+
+    background: #000;
+}
+
+
+/* إخفاء Scrollbar */
+
+.videos::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* ========================================
+   كل فيديو
+======================================== */
+
+.video {
+    width: 100%;
+    height: 100vh;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+
+    background: #000;
+}
+
+
+/* ========================================
+   الفيديو نفسه
+======================================== */
+
+.video video {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    background: #000;
+}
+
+
+/* ========================================
+   عنوان الفيديو
+======================================== */
+
+.video-info {
+    position: absolute;
+
+    right: 0;
+    bottom: 55px;
+
+    width: 100%;
+
+    padding: 15px 20px;
+
+    background: linear-gradient(
+        transparent,
+        rgba(0, 0, 0, 0.85)
+    );
+
+    z-index: 5;
+
+    pointer-events: none;
+}
+
+
+.video-title {
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    margin: 0;
+
+    text-align: right;
+
+    white-space: normal;
+}
+
+
+/* ========================================
+   أزرار الطلوع والنزول
+======================================== */
+
+.buttons {
+    position: fixed;
+
+    right: 30px;
+    top: 50%;
+    margin-right: -150px;
+
+    transform: translateY(-50%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 30px;
+
+    z-index: 1000;
+}
+
+
+.buttons button {
+    width: 55px;
+    height: 55px;
+
+    border: 2px solid white;
+
+    border-radius: 50%;
+
+    background: rgba(40, 40, 40, 0.8);
+
+    color: white;
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.buttons button:hover {
+    background: white;
+
+    color: black;
+
+    transform: scale(1.1);
+}
+
+
+.buttons button:active {
+    transform: scale(0.95);
+}
+/* =========================
+       LOGO
+    ========================= */
+
+    .logo {
+        width: 100px;
+
+        height: 50px;
+
+        font-size: 28px;
+
+        letter-spacing: -2px;
+    }
+
+
+    .logo::before {
+        width: 70px;
+
+        height: 25px;
+
+        top: 12px;
+
+        left: 15px;
+    }
+
+
+    .logo::after {
+        width: 70px;
+
+        left: 15px;
+
+        bottom: 2px;
+
+        border-bottom-width: 2px;
+    }
+
+
+
+/* ========================================
+   الكمبيوتر
+======================================== */
+
+@media (min-width: 700px) {
+
+    .videos {
+        width: 430px;
+
+        height: 100vh;
+
+        margin: auto;
+    }
+
+
+    .video {
+        width: 430px;
+
+        height: 100vh;
+    }
+
+
+    .video video {
+        width: 430px;
+
+        height: 100vh;
+
+        object-fit: contain;
+    }
+
+
+    .buttons {
+        right: calc(50% - 300px);
+    }
+
+}
+
+
+/* ========================================
+   الموبايل
+======================================== */
+
+@media (max-width: 750px) {
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+
+        background: #000;
+
+        overflow: hidden;
+    }
+
+
+    .videos {
+        width: 100%;
+        height: 100vh;
+
+        margin: 0;
+        padding: 0;
+
+        overflow-y: scroll;
+
+        scroll-snap-type: y mandatory;
+    }
+
+
+    .video {
+        width: 100%;
+        height: 100vh;
+
+        min-height: 100vh;
+
+        position: relative;
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        background: #000;
+
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+    }
+
+
+    .video video {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        display: block;
+    }
+
+
+    /* العنوان */
+
+    .video-info {
+        position: absolute;
+
+        left: 0;
+        right: 0;
+
+        bottom: 50px;
+
+        width: 100%;
+
+        padding: 20px 15px 15px;
+
+        background: linear-gradient(
+            transparent,
+            rgba(0, 0, 0, 0.85)
+        );
+
+        z-index: 5;
+
+        pointer-events: none;
+    }
+
+
+    .video-title {
+        color: white;
+
+        font-size: 16px;
+
+        font-weight: bold;
+
+        margin: 0;
+
+        text-align: right;
+    }
+
+
+    /* إخفاء أزرار الطلوع والنزول */
+
+    .buttons {
+        display: none;
+    }
+
+
+    /* إخفاء زر Fullscreen */
+
+    video::-webkit-media-controls-fullscreen-button {
+        display: none !important;
+    }
+
+}
+
+
+/* ========================================
+   شاشات الموبايل الصغيرة جدًا
+======================================== */
+
+@media (max-width: 400px) {
+
+    .video-title {
+        font-size: 14px;
+    }
+
+
+    .video-info {
+        bottom: 45px;
+
+        padding: 15px 10px 10px;
+    }
+
+}
