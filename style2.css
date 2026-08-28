@@ -17,46 +17,13 @@ html,
 body {
     width: 100%;
     height: 100%;
+
     margin: 0;
     padding: 0;
 
     background: #000;
 
     overflow: hidden;
-}
-
-
-/* ========================================
-   Header
-======================================== */
-
-header {
-    width: 98%;
-    margin: auto;
-
-    padding: 10px 0;
-
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-
-    flex-wrap: wrap;
-
-    gap: 15px;
-}
-
-
-/* ========================================
-   العنوان
-======================================== */
-
-h3 {
-    color: white;
-
-    text-align: center;
-
-    margin-bottom: 10px;
 }
 
 
@@ -69,16 +36,12 @@ h3 {
     height: 100vh;
 
     overflow-y: scroll;
+    overflow-x: visible;
 
     scroll-snap-type: y mandatory;
 
     scrollbar-width: none;
-
-    background: #000;
 }
-
-
-/* إخفاء Scrollbar */
 
 .videos::-webkit-scrollbar {
     display: none;
@@ -90,10 +53,12 @@ h3 {
 ======================================== */
 
 .video {
-    width: 100%;
+    width: 430px;
     height: 100vh;
 
     position: relative;
+
+    margin: auto;
 
     display: flex;
 
@@ -112,14 +77,57 @@ h3 {
 ======================================== */
 
 .video video {
-    width: 100%;
-    height: 100%;
+    width: 430px;
+    height: 100vh;
 
     display: block;
 
-    object-fit: cover;
+    object-fit: contain;
 
     background: #000;
+}
+.video-description {
+    color: #666;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    margin-top: 8px;
+
+    text-align: right;
+
+    font-weight: normal;
+}
+
+
+/* ========================================
+   معلومات الفيديو
+   خارج الفيديو ناحية الشمال
+======================================== */
+
+.video-info {
+    position: absolute;
+
+    right: calc(100% + 100px);
+
+    top: 30%;
+    transform: translateY(-50%);
+
+    width: 300px;
+
+    padding: 20px;
+
+    background: #fff;
+
+    border-radius: 5px;
+
+    z-index: 9999;
+
+    text-align: right;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -127,39 +135,22 @@ h3 {
    عنوان الفيديو
 ======================================== */
 
-.video-info {
-    position: absolute;
-
-    right: 0;
-    bottom: 55px;
-
-    width: 100%;
-
-    padding: 15px 20px;
-
-    background: linear-gradient(
-        transparent,
-        rgba(0, 0, 0, 0.85)
-    );
-
-    z-index: 5;
-
-    pointer-events: none;
-}
-
-
 .video-title {
-    color: white;
+    color: #222;
 
-    font-size: 18px;
+    font-size: 22px;
 
     font-weight: bold;
+
+    line-height: 1.6;
 
     margin: 0;
 
     text-align: right;
 
     white-space: normal;
+
+    word-wrap: break-word;
 }
 
 
@@ -170,9 +161,9 @@ h3 {
 .buttons {
     position: fixed;
 
-    right: 30px;
+    right: calc(50% - 300px);
+
     top: 50%;
-    margin-right: -150px;
 
     transform: translateY(-50%);
 
@@ -180,9 +171,9 @@ h3 {
 
     flex-direction: column;
 
-    gap: 30px;
+    gap: 20px;
 
-    z-index: 1000;
+    z-index: 10000;
 }
 
 
@@ -198,7 +189,7 @@ h3 {
 
     color: white;
 
-    font-size: 32px;
+    font-size: 28px;
 
     font-weight: bold;
 
@@ -225,85 +216,26 @@ h3 {
 .buttons button:active {
     transform: scale(0.95);
 }
-/* =========================
-       LOGO
-    ========================= */
-
-    .logo {
-        width: 100px;
-
-        height: 50px;
-
-        font-size: 28px;
-
-        letter-spacing: -2px;
-    }
-
-
-    .logo::before {
-        width: 70px;
-
-        height: 25px;
-
-        top: 12px;
-
-        left: 15px;
-    }
-
-
-    .logo::after {
-        width: 70px;
-
-        left: 15px;
-
-        bottom: 2px;
-
-        border-bottom-width: 2px;
-    }
-
 
 
 /* ========================================
-   الكمبيوتر
+   إخفاء Fullscreen
 ======================================== */
 
-@media (min-width: 700px) {
-
-    .videos {
-        width: 430px;
-
-        height: 100vh;
-
-        margin: auto;
-    }
-
-
-    .video {
-        width: 430px;
-
-        height: 100vh;
-    }
-
-
-    .video video {
-        width: 430px;
-
-        height: 100vh;
-
-        object-fit: contain;
-    }
-
-
-    .buttons {
-        right: calc(50% - 300px);
-    }
-
+video::-webkit-media-controls-fullscreen-button {
+    display: none !important;
 }
 
 
 /* ========================================
-   الموبايل
+   الموبايل والتابلت
 ======================================== */
+@media (max-width: 750px) {
+    .video-description {
+        color: #ddd;
+        font-size: 14px;
+    }
+}
 
 @media (max-width: 750px) {
 
@@ -322,20 +254,24 @@ h3 {
         width: 100%;
         height: 100vh;
 
-        margin: 0;
-        padding: 0;
-
         overflow-y: scroll;
+        overflow-x: hidden;
 
         scroll-snap-type: y mandatory;
     }
 
+
+    /* ========================================
+       الفيديو
+    ======================================== */
 
     .video {
         width: 100%;
         height: 100vh;
 
         min-height: 100vh;
+
+        margin: 0;
 
         position: relative;
 
@@ -355,13 +291,17 @@ h3 {
         width: 100%;
         height: 100%;
 
-        object-fit: cover;
+        object-fit: contain;
 
         display: block;
+
+        background: #000;
     }
 
 
-    /* العنوان */
+    /* ========================================
+       المعلومات على الموبايل
+    ======================================== */
 
     .video-info {
         position: absolute;
@@ -369,18 +309,28 @@ h3 {
         left: 0;
         right: 0;
 
-        bottom: 50px;
+        bottom: 60px;
+
+        top: auto;
+
+        transform: none;
 
         width: 100%;
 
-        padding: 20px 15px 15px;
+        padding: 30px 15px 15px;
 
         background: linear-gradient(
             transparent,
-            rgba(0, 0, 0, 0.85)
+            rgba(0, 0, 0, 0.9)
         );
 
-        z-index: 5;
+        border-radius: 0;
+
+        box-shadow: none;
+
+        z-index: 10;
+
+        text-align: right;
 
         pointer-events: none;
     }
@@ -389,47 +339,138 @@ h3 {
     .video-title {
         color: white;
 
-        font-size: 16px;
+        font-size: 18px;
 
-        font-weight: bold;
-
-        margin: 0;
+        line-height: 1.5;
 
         text-align: right;
     }
 
 
-    /* إخفاء أزرار الطلوع والنزول */
+    /* ========================================
+       إخفاء الأسهم على الموبايل
+    ======================================== */
 
     .buttons {
         display: none;
-    }
-
-
-    /* إخفاء زر Fullscreen */
-
-    video::-webkit-media-controls-fullscreen-button {
-        display: none !important;
     }
 
 }
 
 
 /* ========================================
-   شاشات الموبايل الصغيرة جدًا
+   الموبايل الصغير
 ======================================== */
 
 @media (max-width: 400px) {
 
     .video-title {
-        font-size: 14px;
+        font-size: 16px;
     }
 
 
     .video-info {
-        bottom: 45px;
+        bottom: 50px;
 
-        padding: 15px 10px 10px;
+        padding: 25px 10px 10px;
     }
 
+}
+/* ========================================
+   التابلت بالوضع الرأسي
+======================================== */
+
+@media (min-width: 701px) and (max-width: 1100px) and (orientation: portrait) {
+
+    /* إخفاء أسهم الشورتس */
+    .buttons {
+        display: none !important;
+    }
+
+    /* مساحة الشورتس */
+    .videos {
+        width: 100%;
+        height: 100vh;
+
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+        scroll-snap-type: y mandatory;
+    }
+
+    /* الفيديو */
+    .video {
+        width: 100%;
+        height: 100vh;
+
+        margin: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .video video {
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+    }
+
+    /* العنوان والوصف */
+    .video-info {
+        position: absolute;
+
+        left: 0;
+        right: 0;
+
+        bottom: 60px;
+
+        top: auto;
+
+        transform: none;
+
+        width: 100%;
+
+        padding: 40px 30px 20px;
+
+        background: linear-gradient(
+            transparent,
+            rgba(0, 0, 0, 0.9)
+        );
+
+        border-radius: 0;
+
+        box-shadow: none;
+
+        z-index: 10;
+
+        text-align: right;
+
+        pointer-events: none;
+    }
+
+    .video-title {
+        color: white;
+
+        font-size: 22px;
+
+        line-height: 1.5;
+
+        margin: 0 0 8px;
+
+        text-align: right;
+    }
+
+    .video-description {
+        color: #ddd;
+
+        font-size: 16px;
+
+        line-height: 1.6;
+
+        margin: 0;
+
+        text-align: right;
+    }
 }

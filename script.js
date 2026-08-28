@@ -7,25 +7,30 @@ const videoList = [
     {
         id: "video1",
         src: "videos/حسن التقسيم.mp4",
-        title: "حسن التقسيم ما لم تسمعه من قبل"
+        title: "حسن التقسيم ما لم تسمعه من قبل",
+        description: "شرح مبسط وسريع لأهم أفكار حسن التقسيم."
     },
 
     {
         id: "video2",
         src: "videos/كل حاجه تاخد وقتها.mp4",
-        title: "الصبر كل حاجه بتأخد وقتها"
+        title: "الصبر كل حاجه بتأخد وقتها",
+        description:"اصبر و كل حاجه انت عاوزها ادعي ربك ربك كريم"
+        
     },
 
     {
         id: "video3",
         src: "videos/محمد صلاح core.mp4",
-        title: "مستر محمد صلاح core"
+        title: "مستر محمد صلاح core",
+        description:"اضحك مع المستر محمد صلاح"
     },
 
     {
         id: "video4",
         src: "videos/البلاغه سهله.mp4",
-        title: "البلاغه اسهل ما يمكن"
+        title: "البلاغه اسهل ما يمكن",
+        description:"يا جماعه البلاغه سهله و الله"
     }
 
 ];
@@ -152,17 +157,22 @@ if (videosContainer) {
         // عنوان الفيديو
         // ========================================
 
-        const title =
-            document.createElement("h3");
+        const title = document.createElement("h3");
 
-        title.className =
-            "video-title";
+        title.className = "video-title";
 
-        title.textContent =
-            item.title;
+        title.textContent = item.title;
 
+
+        // الوصف
+        const description = document.createElement("p");
+
+        description.className = "video-description";
+
+        description.textContent = item.description || "";
 
         info.appendChild(title);
+        info.appendChild(description);
 
 
         // ========================================
